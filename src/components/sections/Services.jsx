@@ -33,9 +33,8 @@ export default function Services() {
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.48, delay: i * 0.1, ease: "easeOut" }}
                 whileHover={{ y: -8, scale: 1.01 }}
-                className={`surface-card card-pop group relative flex h-full flex-col p-6 ${
-                  isFeatured ? "border-[#00c2a8]/45 shadow-[0_26px_48px_rgba(0,194,168,0.2)]" : ""
-                }`}
+                className={`surface-card card-pop group relative flex h-full flex-col p-6 ${isFeatured ? "border-[#00c2a8]/45 shadow-[0_26px_48px_rgba(0,194,168,0.2)]" : ""
+                  }`}
               >
                 {isFeatured && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#00c2a8] px-3 py-1 text-xs font-semibold tracking-wide text-[#062335]">
@@ -57,7 +56,7 @@ export default function Services() {
                 <motion.a
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  href="#contact"
+                  href="https://instagram.com/digitallifterz"
                   className="btn-primary btn-animated mt-8 block rounded-xl py-3 text-center font-semibold"
                 >
                   Get Started
