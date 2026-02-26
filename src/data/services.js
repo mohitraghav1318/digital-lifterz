@@ -5,7 +5,7 @@ export const services = [
             "Logo Design",
             "Service Menu Design",
             "10 Social Media Posts",
-            "7+ Reels",
+            "5+ Reels",
             "Instagram & Facebook Posting",
         ],
     },

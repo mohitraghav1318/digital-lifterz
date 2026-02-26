@@ -28,11 +28,14 @@ export default function Contact() {
               whileHover={{ y: -6, scale: 1.015 }}
               className="surface-card card-pop flex items-center gap-4 p-4"
             >
-              <div className="rounded-xl bg-gradient-to-r from-[#ff7e47] to-[#1f8fff] p-3">
+              <div className="rounded-xl bg-gradient-to-tr from-[#f58529] via-[#dd2a7b] to-[#8134af] p-3 text-white shadow-lg shadow-[#dd2a7b]/30">
                 <FaInstagram size={20} />
               </div>
+
               <div>
-                <p className="text-xs uppercase tracking-wide text-slate-300/75">Instagram</p>
+                <p className="text-xs uppercase tracking-wide text-slate-300/75">
+                  Instagram
+                </p>
                 <p className="font-semibold">@digital_lifterz</p>
               </div>
             </motion.a>

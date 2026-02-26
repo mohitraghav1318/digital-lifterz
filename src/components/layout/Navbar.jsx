@@ -1,10 +1,17 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { FiMenu, FiX, FiHome, FiBriefcase, FiUser, FiMail } from "react-icons/fi";
 import logo from "../../assets/logo.png";
 
-export default function Navbar({ theme, onToggleTheme }) {
-  const [isCompact, setIsCompact] = useState(false);
+export default function Navbar() {
 
+  const [isCompact, setIsCompact] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const location = useLocation();
+
+  /* Detect scroll */
   useEffect(() => {
     const handleScroll = () => {
       setIsCompact(window.scrollY > 28);
@@ -12,67 +19,171 @@ export default function Navbar({ theme, onToggleTheme }) {
 
     handleScroll();
     window.addEventListener("scroll", handleScroll);
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+
+  /* Nav links config */
+  const navLinks = [
+    {
+      name: "Home",
+      path: "/",
+      icon: <FiHome />
+    },
+    {
+      name: "Services",
+      path: "/services",
+      icon: <FiBriefcase />
+    },
+    {
+      name: "About",
+      path: "/about",
+      icon: <FiUser />
+    }
+  ];
+
+
+  /* Active check */
+  const isActive = (path) => location.pathname === path;
+
+
   return (
     <motion.nav
-      initial={{ y: -20, opacity: 0 }}
+      initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.45, ease: "easeOut" }}
       className="fixed inset-x-0 top-0 z-50 pt-4"
     >
       <div className="section-shell">
-        <div
-          className={`surface-card flex items-center justify-between px-4 sm:px-6 transition-all duration-300 ${
-            isCompact ? "py-2.5" : "py-3.5"
-          }`}
-        >
-          <a href="#" className="flex items-center gap-3">
+
+        <div className={`surface-card navbar-shell flex items-center justify-between px-4 ${isCompact ? "py-2.5" : "py-3.5"}`}>
+
+          {/* LOGO */}
+          <Link to="/" className="flex items-center gap-3">
+
             <img
               src={logo}
               alt="Digital Lifterz"
-              className="h-9 w-auto drop-shadow-[0_0_10px_rgba(0,194,168,0.55)]"
+              className="h-9 w-auto rounded-lg"
             />
-            <span className="gradient-text text-base font-semibold sm:text-lg">
+
+            <span className="gradient-text font-semibold text-base sm:text-lg">
               Digital Lifterz
             </span>
-          </a>
 
-          <div className="flex items-center gap-3 sm:gap-5">
+          </Link>
+
+
+          {/* DESKTOP NAV */}
+          <div className="hidden md:flex items-center gap-2">
+
+            {navLinks.map(link => (
+
+              <Link
+                key={link.name}
+                to={link.path}
+                className={`relative flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300
+
+                ${isActive(link.path)
+                    ? "text-white"
+                    : "text-slate-300 hover:text-white"}
+                `}
+              >
+
+                {link.icon}
+
+                {link.name}
+
+                {/* Active indicator */}
+                {isActive(link.path) && (
+                  <motion.div
+                    layoutId="activeTab"
+                    className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#00c2a8]/20 to-[#1f8fff]/20 border border-[#00c2a8]/30"
+                  />
+                )}
+
+              </Link>
+
+            ))}
+
+
+            {/* CONTACT BUTTON */}
             <a
-              href="#services"
-              className="text-sm text-slate-200/90 transition-colors duration-300 hover:text-[#00c2a8] sm:text-base"
+              href="/#contact"
+              className="btn-primary btn-animated flex items-center gap-2 rounded-lg px-4 py-2 font-semibold ml-2"
             >
-              Services
-            </a>
-
-            <motion.button
-              type="button"
-              onClick={onToggleTheme}
-              whileTap={{ scale: 0.94 }}
-              className="surface-card relative flex h-10 w-20 items-center px-1"
-              aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
-            >
-              <motion.span
-                className="absolute top-1/2 h-8 w-8 -translate-y-1/2 rounded-full bg-gradient-to-r from-[#00c2a8] to-[#1f8fff]"
-                animate={{ x: theme === "dark" ? 0 : 40, rotate: theme === "dark" ? 0 : 180 }}
-                transition={{ type: "spring", stiffness: 260, damping: 18 }}
-              />
-              <span className="relative z-10 flex w-full justify-between px-1 text-[10px] font-bold tracking-wide text-[#04253a]">
-                <span>D</span>
-                <span>L</span>
-              </span>
-            </motion.button>
-
-            <a
-              href="#contact"
-              className="btn-primary btn-animated rounded-lg px-4 py-2 text-sm font-semibold shadow-lg shadow-[#00c2a8]/20 transition hover:-translate-y-0.5 sm:text-base"
-            >
+              <FiMail />
               Contact
             </a>
+
           </div>
+
+
+
+          {/* MOBILE MENU BUTTON */}
+          <button
+            className="md:hidden text-xl"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <FiX /> : <FiMenu />}
+          </button>
+
         </div>
+
+
+
+        {/* MOBILE MENU */}
+        <AnimatePresence>
+
+          {isOpen && (
+
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="surface-card mt-2 p-4 md:hidden"
+            >
+
+              <div className="flex flex-col gap-2">
+
+                {navLinks.map(link => (
+
+                  <Link
+                    key={link.name}
+                    to={link.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-lg
+
+                    ${isActive(link.path)
+                        ? "bg-[#00c2a8]/20 text-white"
+                        : "text-slate-300"}
+                    `}
+                  >
+
+                    {link.icon}
+                    {link.name}
+
+                  </Link>
+
+                ))}
+
+
+                <Link
+                  to="/#contact"
+                  className="btn-primary btn-animated navbar-cta rounded-lg px-4 py-2 text-sm font-semibold sm:text-base"
+                >
+                  Contact
+                </Link>
+
+              </div>
+
+            </motion.div>
+
+          )}
+
+        </AnimatePresence>
+
+
       </div>
     </motion.nav>
   );

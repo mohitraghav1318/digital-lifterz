@@ -21,13 +21,24 @@ export default function Hero() {
     },
   };
 
+  const floatingLogo = {
+    animate: {
+      y: [0, -8, 0],
+      scale: [1, 1.03, 1],
+      transition: {
+        duration: 5,
+        repeat: Infinity,
+        ease: "easeInOut",
+      },
+    },
+  };
+
   const floatingCard = {
     animate: {
       y: [0, -12, 0],
       transition: {
-        duration: 4.4,
+        duration: 4,
         repeat: Infinity,
-        ease: "easeInOut",
       },
     },
   };
@@ -51,143 +62,209 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative overflow-hidden px-6 py-20 min-h-screen flex items-center">
+    <section className="relative flex min-h-screen items-start overflow-hidden pb-16 pt-30 sm:pt-32 lg:items-center">
 
-      {/* Background glow */}
-      <div className="ambient-orb left-[-12%] top-[7%] bg-[#00c2a8]/30 pulse-soft" />
-      <div className="ambient-orb right-[-10%] top-[18%] bg-[#ff7e47]/22 pulse-soft" />
+      {/* Background */}
+      <div className="ambient-orb left-[-20%] top-[5%] bg-[#00c2a8]/20 pulse-soft" />
+      <div className="ambient-orb right-[-20%] top-[20%] bg-[#ff7e47]/20 pulse-soft" />
 
-      <div className="section-shell grid items-center gap-12 lg:grid-cols-2">
+      <div className="section-shell grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
 
-        {/* LEFT SIDE */}
+        {/* LEFT */}
         <motion.div
           variants={revealGroup}
           initial="hidden"
           animate="show"
-          className="z-10"
+          className="z-10 text-center lg:text-left"
         >
 
-          {/* Tagline */}
+          {/* MOBILE LOGO */}
+          <motion.img
+            variants={floatingLogo}
+            animate="animate"
+            src={logo}
+            alt="Digital Lifterz"
+            className="
+              mx-auto lg:hidden
+              w-24 sm:w-28
+              mb-6
+              rounded-xl
+              drop-shadow-[0_0_25px_rgba(0,194,168,0.7)]
+            "
+          />
+
+          {/* TAGLINE */}
           <motion.p
             variants={revealItem}
-            className="mb-3 text-sm tracking-[0.25em] text-[#00c2a8] font-semibold"
+            className="mb-3 text-xs sm:text-sm tracking-[0.25em] text-[#00c2a8] font-semibold"
           >
             TURNING REACH TO REVENUE
           </motion.p>
 
-          {/* Heading */}
+          {/* HEADING */}
           <motion.h1
             variants={revealItem}
-            className="max-w-xl text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl"
+            className="
+              text-3xl
+              sm:text-4xl
+              md:text-5xl
+              lg:text-6xl
+              font-bold
+              leading-tight
+              max-w-2xl
+              mx-auto
+              lg:mx-0
+            "
           >
             Transform your digital presence into
-            <span className="gradient-text block">
+
+            <span className="gradient-text block mt-2">
               measurable business growth.
             </span>
+
           </motion.h1>
 
-          {/* Description */}
+          {/* DESCRIPTION */}
           <motion.p
             variants={revealItem}
-            className="mt-6 max-w-xl text-base text-slate-300/85 sm:text-lg"
+            className="
+              mt-5
+              text-sm
+              sm:text-base
+              text-slate-300/90
+              max-w-xl
+              mx-auto
+              lg:mx-0
+            "
           >
-            We help brands attract the right audience, build trust, and convert
-            attention into meaningful business outcomes through modern websites,
-            strategic design, and performance-focused digital solutions.
+            We help brands attract the right audience, build trust,
+            and convert attention into meaningful business outcomes
+            through modern digital solutions.
           </motion.p>
 
-          {/* Buttons */}
+
+          {/* BUTTONS */}
           <motion.div
             variants={revealItem}
-            className="mt-8 flex flex-wrap gap-4"
+            className="
+              mt-8
+              flex
+              flex-col
+              sm:flex-row
+              gap-3
+              sm:gap-4
+              justify-center
+              lg:justify-start
+            "
           >
 
             <motion.a
-              whileHover={{ y: -2, scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.96 }}
               href="#services"
-              className="btn-primary btn-animated rounded-xl px-7 py-3 font-semibold shadow-lg shadow-[#00c2a8]/25"
+              className="btn-primary btn-animated rounded-xl px-6 py-3 font-semibold text-center"
             >
               Explore Services
             </motion.a>
 
             <motion.a
-              whileHover={{ y: -2, scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.96 }}
               href="#contact"
-              className="btn-ghost rounded-xl px-7 py-3 font-medium text-slate-100"
+              className="btn-ghost rounded-xl px-6 py-3 font-medium text-center"
             >
               Start a Conversation
             </motion.a>
 
           </motion.div>
 
-          {/* Stats */}
+
+          {/* STATS */}
           <motion.div
             variants={revealItem}
-            className="mt-12 grid max-w-xl grid-cols-3 gap-4"
+            className="
+              mt-10
+              grid
+              grid-cols-1
+              sm:grid-cols-3
+              gap-3
+              max-w-2xl
+              mx-auto
+              lg:mx-0
+            "
           >
-            {stats.map((stat) => (
+
+            {stats.map(stat => (
+
               <div
                 key={stat.label}
-                className="surface-card card-pop px-4 py-4 text-left"
+                className="surface-card p-3 sm:p-4 text-center lg:text-left"
               >
-                <h3 className={`text-xl font-bold sm:text-2xl ${stat.tone}`}>
+
+                <h3 className={`font-bold text-lg sm:text-xl ${stat.tone}`}>
                   {stat.value}
                 </h3>
 
-                <p className="mt-1 text-xs text-slate-300/75 sm:text-sm">
+                <p className="text-xs text-slate-300/75">
                   {stat.label}
                 </p>
+
               </div>
+
             ))}
+
           </motion.div>
 
         </motion.div>
 
 
 
-        {/* RIGHT SIDE */}
+        {/* RIGHT SIDE (DESKTOP ONLY) */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.65, delay: 0.2 }}
-          className="relative z-10 hidden min-h-[430px] items-center justify-center lg:flex"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="relative hidden min-h-[470px] items-center justify-center lg:flex"
         >
 
-          {/* LOGO MOVED HERE */}
+          {/* LOGO */}
           <motion.img
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
+            variants={floatingLogo}
+            animate="animate"
             src={logo}
             alt="Digital Lifterz"
-            className="absolute -top-10 right-10 w-20 drop-shadow-[0_0_25px_rgba(0,194,168,0.6)]"
+            className="
+              absolute
+              -top-14
+              right-8
+              w-32
+              xl:w-40
+              rounded-xl
+              drop-shadow-[0_0_45px_rgba(0,194,168,0.75)]
+            "
           />
 
-          {/* Main card */}
-          <div className="surface-card card-pop relative w-full max-w-[450px] p-6">
+          {/* MAIN CARD */}
+          <div className="surface-card w-full max-w-[460px] p-7">
 
-            <p className="text-sm uppercase tracking-[0.18em] text-slate-300/75">
+            <p className="text-sm text-slate-300/70 uppercase tracking-wider">
               Digital Growth System
             </p>
 
-            <h3 className="mt-3 text-2xl font-semibold">
+            <h3 className="text-2xl font-semibold mt-3">
               Attract. Engage. Convert.
             </h3>
 
-            <p className="mt-3 text-sm leading-relaxed text-slate-300/80">
-              Every element is designed to strengthen your brand presence and
-              turn audience attention into real business opportunities.
+            <p className="text-sm text-slate-300 mt-3">
+              Every element strengthens your brand and turns attention into business.
             </p>
 
           </div>
 
-          {/* Floating cards */}
+          {/* FLOATING CARDS */}
           <motion.div
             variants={floatingCard}
             animate="animate"
-            className="surface-card absolute left-0 top-6 px-4 py-3 text-sm"
+            className="surface-card absolute left-2 top-10 px-4 py-2 text-sm"
           >
             Website Design
           </motion.div>
@@ -195,17 +272,9 @@ export default function Hero() {
           <motion.div
             variants={floatingCard}
             animate="animate"
-            className="surface-card absolute bottom-8 right-0 px-4 py-3 text-sm"
+            className="surface-card absolute bottom-8 right-2 px-4 py-2 text-sm"
           >
             Social Media Growth
-          </motion.div>
-
-          <motion.div
-            variants={floatingCard}
-            animate="animate"
-            className="surface-card absolute right-8 top-1/3 px-4 py-3 text-sm"
-          >
-            Brand Identity
           </motion.div>
 
         </motion.div>
