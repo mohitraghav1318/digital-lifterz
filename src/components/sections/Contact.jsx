@@ -3,21 +3,24 @@ import { motion } from "framer-motion";
 
 export default function Contact() {
   return (
-    <section id="contact" className="relative overflow-hidden py-20 sm:py-24">
-      <div className="ambient-orb right-[-12%] top-[8%] bg-[#1f8fff]/22 pulse-soft" />
-      <div className="ambient-orb bottom-[-14%] left-[-10%] bg-[#00c2a8]/22 pulse-soft" />
-
-      <div className="section-shell grid items-center gap-8 lg:grid-cols-2 lg:gap-14">
+    <section id="contact" className="relative py-16 sm:py-20 lg:py-24">
+      <div className="section-shell grid gap-6 lg:grid-cols-[1.05fr_0.95fr] lg:items-stretch">
         <motion.div
-          initial={{ opacity: 0, x: -26 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.45 }}
+          className="surface-card p-6 sm:p-8"
         >
-          <h2 className="gradient-text text-4xl font-bold sm:text-5xl">Let&apos;s Work Together</h2>
-          <p className="mt-5 max-w-xl text-base text-slate-300/85 sm:text-lg">
-            Ready to grow your brand? Reach us on Instagram or email. We reply quickly
-            and map a practical growth plan for your business.
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+            Contact
+          </p>
+          <h2 className="mt-3 text-3xl font-bold text-slate-900 sm:text-4xl">
+            Let&apos;s build your next growth chapter
+          </h2>
+          <p className="mt-4 max-w-xl text-slate-600 sm:text-lg">
+            Share your business goals and we will recommend a practical roadmap.
+            Fast responses. Clear next steps. No fluff.
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -25,55 +28,72 @@ export default function Contact() {
               href="https://instagram.com/digitallifterz"
               target="_blank"
               rel="noreferrer"
-              whileHover={{ y: -6, scale: 1.015 }}
-              className="surface-card card-pop flex items-center gap-4 p-4"
+              whileHover={{ y: -4 }}
+              className="rounded-xl border border-slate-200 bg-slate-50 p-4 transition hover:border-slate-300"
             >
-              <div className="rounded-xl bg-gradient-to-tr from-[#f58529] via-[#dd2a7b] to-[#8134af] p-3 text-white shadow-lg shadow-[#dd2a7b]/30">
-                <FaInstagram size={20} />
+              <div className="mb-3 inline-flex rounded-lg bg-accent-100 p-2 text-accent-700">
+                <FaInstagram size={18} />
               </div>
-
-              <div>
-                <p className="text-xs uppercase tracking-wide text-slate-300/75">
-                  Instagram
-                </p>
-                <p className="font-semibold">@digital_lifterz</p>
-              </div>
+              <p className="text-xs uppercase tracking-[0.1em] text-slate-500">Instagram</p>
+              <p className="mt-1 font-semibold text-slate-900">@digital_lifterz</p>
             </motion.a>
 
             <motion.a
               href="mailto:digitallifterz@gmail.com"
-              whileHover={{ y: -6, scale: 1.015 }}
-              className="surface-card card-pop flex items-center gap-4 p-4"
+              whileHover={{ y: -4 }}
+              className="rounded-xl border border-slate-200 bg-slate-50 p-4 transition hover:border-slate-300"
             >
-              <div className="rounded-xl bg-gradient-to-r from-[#00c2a8] to-[#1f8fff] p-3">
-                <FaEnvelope size={20} />
+              <div className="mb-3 inline-flex rounded-lg bg-accent-100 p-2 text-accent-700">
+                <FaEnvelope size={18} />
               </div>
-              <div>
-                <p className="text-xs uppercase tracking-wide text-slate-300/75">Email</p>
-                <p className="font-semibold">DigitalLifterz</p>
-              </div>
+              <p className="text-xs uppercase tracking-[0.1em] text-slate-500">Email</p>
+              <p className="mt-1 font-semibold text-slate-900">digitallifterz@gmail.com</p>
             </motion.a>
           </div>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, x: 26 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.5 }}
-          className="surface-card card-pop p-7 text-center sm:p-10"
+          transition={{ duration: 0.45, delay: 0.05 }}
+          className="surface-card flex flex-col justify-between p-6 sm:p-8"
         >
-          <h3 className="text-2xl font-semibold sm:text-3xl">Start Your Next Project</h3>
-          <p className="mx-auto mt-4 max-w-md text-slate-300/80">
-            Get a high-performing website and social growth engine aligned with your goals.
-          </p>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+              Quick Start
+            </p>
+            <h3 className="mt-3 text-2xl font-semibold text-slate-900 sm:text-3xl">
+              Get a free strategy call
+            </h3>
+            <p className="mt-4 text-slate-600">
+              We review your current digital presence and share a focused action plan
+              for content, positioning, and lead generation.
+            </p>
+
+            <ul className="mt-6 space-y-3 text-sm text-slate-600">
+              <li className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent-600" />
+                Personalized recommendations
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent-600" />
+                Practical 30-60-90 day roadmap
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent-600" />
+                No-obligation consultation
+              </li>
+            </ul>
+          </div>
+
           <motion.a
-            whileHover={{ y: -2, scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
+            whileHover={{ y: -2 }}
+            whileTap={{ scale: 0.99 }}
             href="mailto:digitallifterz@gmail.com"
-            className="btn-primary btn-animated mt-7 inline-block rounded-xl px-8 py-3 font-semibold shadow-lg shadow-[#1f8fff]/25"
+            className="btn-primary mt-8 inline-flex items-center justify-center rounded-xl px-8 py-3 font-semibold"
           >
-            Contact Now
+            Book Consultation
           </motion.a>
         </motion.div>
       </div>

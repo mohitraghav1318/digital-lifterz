@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import logo from "../../assets/logo.png";
 
 export default function Hero() {
-
   const revealGroup = {
     hidden: {},
     show: {
@@ -21,148 +20,65 @@ export default function Hero() {
     },
   };
 
-  const floatingLogo = {
-    animate: {
-      y: [0, -8, 0],
-      scale: [1, 1.03, 1],
-      transition: {
-        duration: 5,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    },
-  };
-
-  const floatingCard = {
-    animate: {
-      y: [0, -12, 0],
-      transition: {
-        duration: 4,
-        repeat: Infinity,
-      },
-    },
-  };
-
-  const stats = [
+  const valueProps = [
     {
-      value: "Strategy",
-      label: "Planned for conversion",
-      tone: "text-[#00c2a8]",
+      value: "50+",
+      label: "Campaign launches supported",
     },
     {
-      value: "Design",
-      label: "Built to capture attention",
-      tone: "text-[#1f8fff]",
+      value: "4.8/5",
+      label: "Average client satisfaction",
     },
     {
-      value: "Growth",
-      label: "Focused on real results",
-      tone: "text-[#ff7e47]",
+      value: "3x",
+      label: "Typical reach uplift in 90 days",
     },
   ];
 
   return (
-    <section className="relative flex min-h-screen items-start overflow-hidden pb-16 pt-30 sm:pt-32 lg:items-center">
-
-      {/* Background */}
-      <div className="ambient-orb left-[-20%] top-[5%] bg-[#00c2a8]/20 pulse-soft" />
-      <div className="ambient-orb right-[-20%] top-[20%] bg-[#ff7e47]/20 pulse-soft" />
-
-      <div className="section-shell grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
-
-        {/* LEFT */}
+    <section className="hero-section relative overflow-hidden pb-16 pt-28 sm:pt-32 lg:pb-20">
+      <div className="section-shell grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
         <motion.div
           variants={revealGroup}
           initial="hidden"
           animate="show"
-          className="z-10 text-center lg:text-left"
+          className="z-10"
         >
-
-          {/* MOBILE LOGO */}
-          <motion.img
-            variants={floatingLogo}
-            animate="animate"
-            src={logo}
-            alt="Digital Lifterz"
-            className="
-              mx-auto lg:hidden
-              w-24 sm:w-28
-              mb-6
-              rounded-xl
-              drop-shadow-[0_0_25px_rgba(0,194,168,0.7)]
-            "
-          />
-
-          {/* TAGLINE */}
           <motion.p
             variants={revealItem}
-            className="mb-3 text-xs sm:text-sm tracking-[0.25em] text-[#00c2a8] font-semibold"
+            className="inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-1.5 text-xs font-semibold tracking-[0.12em] text-slate-600"
           >
             TURNING REACH TO REVENUE
           </motion.p>
 
-          {/* HEADING */}
           <motion.h1
             variants={revealItem}
-            className="
-              text-3xl
-              sm:text-4xl
-              md:text-5xl
-              lg:text-6xl
-              font-bold
-              leading-tight
-              max-w-2xl
-              mx-auto
-              lg:mx-0
-            "
+            className="mt-5 max-w-3xl text-4xl font-bold leading-tight text-slate-900 sm:text-5xl md:text-6xl"
           >
-            Transform your digital presence into
-
-            <span className="gradient-text block mt-2">
-              measurable business growth.
+            Build a digital brand that looks premium and performs.
+            <span className="block pt-2 text-accent-700">
+              Clear strategy. Better design. Measurable growth.
             </span>
-
           </motion.h1>
 
-          {/* DESCRIPTION */}
           <motion.p
             variants={revealItem}
-            className="
-              mt-5
-              text-sm
-              sm:text-base
-              text-slate-300/90
-              max-w-xl
-              mx-auto
-              lg:mx-0
-            "
+            className="mt-6 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg"
           >
-            We help brands attract the right audience, build trust,
-            and convert attention into meaningful business outcomes
-            through modern digital solutions.
+            We design and execute growth systems for ambitious businesses: content,
+            positioning, and performance-focused campaigns that convert attention into
+            qualified leads.
           </motion.p>
 
-
-          {/* BUTTONS */}
           <motion.div
             variants={revealItem}
-            className="
-              mt-8
-              flex
-              flex-col
-              sm:flex-row
-              gap-3
-              sm:gap-4
-              justify-center
-              lg:justify-start
-            "
+            className="mt-8 flex flex-col gap-3 sm:flex-row"
           >
-
             <motion.a
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.96 }}
               href="#services"
-              className="btn-primary btn-animated rounded-xl px-6 py-3 font-semibold text-center"
+              className="btn-primary rounded-xl px-7 py-3 font-semibold text-center"
             >
               Explore Services
             </motion.a>
@@ -171,116 +87,81 @@ export default function Hero() {
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.96 }}
               href="#contact"
-              className="btn-ghost rounded-xl px-6 py-3 font-medium text-center"
+              className="btn-ghost rounded-xl px-7 py-3 font-semibold text-center"
             >
               Start a Conversation
             </motion.a>
-
           </motion.div>
 
-
-          {/* STATS */}
           <motion.div
             variants={revealItem}
-            className="
-              mt-10
-              grid
-              grid-cols-1
-              sm:grid-cols-3
-              gap-3
-              max-w-2xl
-              mx-auto
-              lg:mx-0
-            "
+            className="mt-10 grid max-w-3xl grid-cols-1 gap-3 sm:grid-cols-3"
           >
-
-            {stats.map(stat => (
-
+            {valueProps.map((item) => (
               <div
-                key={stat.label}
-                className="surface-card p-3 sm:p-4 text-center lg:text-left"
+                key={item.label}
+                className="surface-card p-4"
               >
-
-                <h3 className={`font-bold text-lg sm:text-xl ${stat.tone}`}>
-                  {stat.value}
-                </h3>
-
-                <p className="text-xs text-slate-300/75">
-                  {stat.label}
-                </p>
-
+                <p className="text-2xl font-bold text-slate-900">{item.value}</p>
+                <p className="mt-1 text-sm text-slate-600">{item.label}</p>
               </div>
-
             ))}
-
           </motion.div>
-
         </motion.div>
 
-
-
-        {/* RIGHT SIDE (DESKTOP ONLY) */}
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="relative hidden min-h-[470px] items-center justify-center lg:flex"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.55, ease: "easeOut" }}
+          className="relative"
         >
+          <div className="surface-card p-6 sm:p-7">
+            <div className="flex items-center justify-between border-b border-slate-200 pb-5">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-500">
+                  Growth Blueprint
+                </p>
+                <h3 className="mt-2 text-2xl font-semibold text-slate-900">
+                  90-Day Visibility Plan
+                </h3>
+              </div>
+              <img src={logo} alt="Digital Lifterz" className="h-14 w-14 rounded-xl" />
+            </div>
 
-          {/* LOGO */}
-          <motion.img
-            variants={floatingLogo}
-            animate="animate"
-            src={logo}
-            alt="Digital Lifterz"
-            className="
-              absolute
-              -top-14
-              right-8
-              w-32
-              xl:w-40
-              rounded-xl
-              drop-shadow-[0_0_45px_rgba(0,194,168,0.75)]
-            "
-          />
+            <div className="grid gap-4 pt-6 sm:grid-cols-2">
+              <article className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
+                  Phase 1
+                </p>
+                <p className="mt-1 font-semibold text-slate-900">Brand Positioning</p>
+                <p className="mt-2 text-sm text-slate-600">Clarify your offer, audience, and message.</p>
+              </article>
 
-          {/* MAIN CARD */}
-          <div className="surface-card w-full max-w-[460px] p-7">
+              <article className="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
+                  Phase 2
+                </p>
+                <p className="mt-1 font-semibold text-slate-900">Content & Distribution</p>
+                <p className="mt-2 text-sm text-slate-600">Build consistent social and paid visibility.</p>
+              </article>
 
-            <p className="text-sm text-slate-300/70 uppercase tracking-wider">
-              Digital Growth System
-            </p>
+              <article className="rounded-xl border border-slate-200 bg-slate-50 p-4 sm:col-span-2">
+                <p className="text-xs font-semibold uppercase tracking-[0.1em] text-slate-500">
+                  Phase 3
+                </p>
+                <p className="mt-1 font-semibold text-slate-900">Conversion Optimization</p>
+                <p className="mt-2 text-sm text-slate-600">
+                  Convert traffic into leads with improved landing pages, creatives, and offers.
+                </p>
+              </article>
+            </div>
 
-            <h3 className="text-2xl font-semibold mt-3">
-              Attract. Engage. Convert.
-            </h3>
-
-            <p className="text-sm text-slate-300 mt-3">
-              Every element strengthens your brand and turns attention into business.
-            </p>
-
+            <div className="mt-6 rounded-xl bg-accent-50 px-4 py-3 text-sm text-accent-800">
+              Weekly reporting included with strategy call and actionable next steps.
+            </div>
           </div>
-
-          {/* FLOATING CARDS */}
-          <motion.div
-            variants={floatingCard}
-            animate="animate"
-            className="surface-card absolute left-2 top-10 px-4 py-2 text-sm"
-          >
-            Website Design
-          </motion.div>
-
-          <motion.div
-            variants={floatingCard}
-            animate="animate"
-            className="surface-card absolute bottom-8 right-2 px-4 py-2 text-sm"
-          >
-            Social Media Growth
-          </motion.div>
-
         </motion.div>
-
       </div>
-
     </section>
   );
 }

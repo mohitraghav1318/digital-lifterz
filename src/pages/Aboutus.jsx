@@ -27,8 +27,8 @@ export default function AboutUs() {
         <main className="relative min-h-screen pt-28 sm:pt-32 pb-16 sm:pb-20 px-4 sm:px-6">
 
             {/* Background glow */}
-            <div className="ambient-orb hidden sm:block left-[-10%] top-[10%] bg-[#00c2a8]/20 pulse-soft" />
-            <div className="ambient-orb hidden sm:block right-[-10%] bottom-[10%] bg-[#1f8fff]/20 pulse-soft" />
+            <div className="ambient-orb hidden sm:block left-[-10%] top-[10%] bg-[#22d3ee]/20 pulse-soft" />
+            <div className="ambient-orb hidden sm:block right-[-10%] bottom-[10%] bg-[#22d3ee]/18 pulse-soft" />
 
 
             <div className="section-shell">
@@ -51,7 +51,7 @@ export default function AboutUs() {
 
                     <motion.p
                         variants={item}
-                        className="text-xs sm:text-sm tracking-[0.25em] text-[#00c2a8] font-semibold mb-3"
+                        className="text-xs sm:text-sm tracking-[0.25em] text-[#22d3ee] font-semibold mb-3"
                     >
                         TURNING REACH TO REVENUE
                     </motion.p>

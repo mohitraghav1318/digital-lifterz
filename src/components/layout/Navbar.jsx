@@ -85,8 +85,8 @@ export default function Navbar() {
                 className={`relative flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-300
 
                 ${isActive(link.path)
-                    ? "text-white"
-                    : "text-slate-300 hover:text-white"}
+                    ? "text-slate-900"
+                    : "text-slate-600 hover:text-slate-900"}
                 `}
               >
 
@@ -98,7 +98,7 @@ export default function Navbar() {
                 {isActive(link.path) && (
                   <motion.div
                     layoutId="activeTab"
-                    className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#00c2a8]/20 to-[#1f8fff]/20 border border-[#00c2a8]/30"
+                    className="absolute inset-0 -z-10 rounded-lg border border-slate-300 bg-slate-100"
                   />
                 )}
 
@@ -122,7 +122,7 @@ export default function Navbar() {
 
           {/* MOBILE MENU BUTTON */}
           <button
-            className="md:hidden text-xl"
+            className="md:hidden rounded-lg border border-slate-300 bg-white p-2 text-xl text-slate-700"
             onClick={() => setIsOpen(!isOpen)}
           >
             {isOpen ? <FiX /> : <FiMenu />}
@@ -155,8 +155,8 @@ export default function Navbar() {
                     className={`flex items-center gap-3 px-4 py-3 rounded-lg
 
                     ${isActive(link.path)
-                        ? "bg-[#00c2a8]/20 text-white"
-                        : "text-slate-300"}
+                        ? "bg-slate-100 text-slate-900"
+                        : "text-slate-600"}
                     `}
                   >
 

@@ -12,8 +12,8 @@ export default function ServicesPage() {
         <main className="services-page relative px-4 sm:px-6">
 
             {/* Background orbs */}
-            <div className="ambient-orb left-[-30%] top-[5%] bg-[#00c2a8]/20 pulse-soft" />
-            <div className="ambient-orb right-[-30%] bottom-[5%] bg-[#1f8fff]/20 pulse-soft" />
+            <div className="ambient-orb left-[-30%] top-[5%] bg-[#22d3ee]/20 pulse-soft" />
+            <div className="ambient-orb right-[-30%] bottom-[5%] bg-[#22d3ee]/18 pulse-soft" />
 
 
             <section className="min-h-screen pt-24 sm:pt-28 pb-16 sm:pb-20">
@@ -55,10 +55,11 @@ export default function ServicesPage() {
 
                                 <motion.div
                                     key={category.id}
-                                    whileHover={{ y: -6 }}
+                                    whileHover={{ y: -8, scale: 1.03 }}
                                     whileTap={{ scale: 0.98 }}
+                                    transition={{ duration: 0.3, ease: "easeInOut" }}
                                     onClick={() => setSelectedCategory(category)}
-                                    className="surface-card services-card p-5 sm:p-6 lg:p-8 cursor-pointer"
+                                    className="surface-card services-card gradient-hover-card p-5 sm:p-6 lg:p-8 cursor-pointer"
                                 >
 
                                     <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3 gradient-text">
@@ -125,9 +126,10 @@ export default function ServicesPage() {
 
                                         <motion.div
                                             key={pkg.name}
-                                            whileHover={{ y: -6 }}
+                                            whileHover={{ y: -8, scale: 1.03 }}
                                             whileTap={{ scale: 0.98 }}
-                                            className="surface-card p-5 sm:p-6 flex flex-col justify-between"
+                                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                                            className="surface-card services-package-card gradient-hover-card p-5 sm:p-6 flex flex-col justify-between"
                                         >
 
                                             <div>
