@@ -105,12 +105,12 @@ export function verifyPassword(password) {
   const storedHash = process.env.ADMIN_PASSWORD_HASH;
   const localPassword = process.env.ADMIN_PASSWORD;
 
-  if (!storedHash && process.env.NODE_ENV !== "production" && localPassword) {
+  if (!storedHash && localPassword) {
     return timingSafeEqual(password, localPassword);
   }
 
   if (!storedHash) {
-    throw new Error("ADMIN_PASSWORD_HASH is not configured.");
+    throw new Error("ADMIN_PASSWORD_HASH or ADMIN_PASSWORD is not configured.");
   }
 
   const [scheme, iterations, salt, expectedHash] = storedHash.split(":");

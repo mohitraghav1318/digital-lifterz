@@ -155,6 +155,15 @@ ADMIN_PASSWORD_HASH=pbkdf2:...
 ADMIN_SESSION_SECRET=...
 ```
 
+For a simpler setup, Vercel can also use this instead of `ADMIN_PASSWORD_HASH`:
+
+```bash
+ADMIN_PASSWORD=your-strong-password
+ADMIN_SESSION_SECRET=replace-with-32-plus-character-secret
+```
+
+`ADMIN_PASSWORD_HASH` is preferred for production, but `ADMIN_PASSWORD` works when you need a straightforward deployment.
+
 To persist service edits in production, connect Vercel KV or Upstash Redis and add:
 
 ```bash
