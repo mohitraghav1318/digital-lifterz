@@ -23,7 +23,13 @@ export default defineConfig([
       },
     },
     rules: {
-      'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      'no-unused-vars': ['error', { varsIgnorePattern: '^(motion|[A-Z_])' }],
+    },
+  },
+  {
+    files: ['api/**/*.js', 'scripts/**/*.mjs', 'vite.config.js'],
+    languageOptions: {
+      globals: globals.node,
     },
   },
 ])

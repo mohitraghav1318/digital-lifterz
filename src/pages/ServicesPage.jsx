@@ -1,11 +1,32 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { serviceCategories } from "../data/serviceCategories";
+import { fetchServices, getFallbackServices } from "../lib/servicesApi";
 
 export default function ServicesPage() {
 
+    const [serviceCategories, setServiceCategories] = useState(getFallbackServices().categories);
     const [selectedCategory, setSelectedCategory] = useState(null);
     const [selectedPackage, setSelectedPackage] = useState(null);
+
+    useEffect(() => {
+        let isMounted = true;
+
+        fetchServices()
+            .then((data) => {
+                if (isMounted && data.categories?.length) {
+                    setServiceCategories(data.categories);
+                }
+            })
+            .catch(() => {
+                if (isMounted) {
+                    setServiceCategories(getFallbackServices().categories);
+                }
+            });
+
+        return () => {
+            isMounted = false;
+        };
+    }, []);
 
     return (
 

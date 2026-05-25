@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import ServicesPage from "./pages/ServicesPage";
 import Navbar from "./components/layout/Navbar";
 import AboutUs from "./pages/Aboutus";
+import AdminPanel from "./pages/admin/AdminPanel";
 import ScrollToHash from "./components/ScrollToHash";
 import PageTransition from "./components/animation/PageTransition";
 
@@ -28,7 +29,7 @@ function AppRoutes({ theme, toggleTheme }) {
 
   return (
     <>
-      <Navbar />
+      {location.pathname !== "/admin" && <Navbar />}
       <ScrollToHash />
 
       <AnimatePresence mode="wait">
@@ -54,6 +55,14 @@ function AppRoutes({ theme, toggleTheme }) {
             element={
               <PageTransition>
                 <AboutUs />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <PageTransition>
+                <AdminPanel />
               </PageTransition>
             }
           />

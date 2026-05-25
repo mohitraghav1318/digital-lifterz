@@ -120,6 +120,52 @@ npm run build
 
 ---
 
+## 🔐 Admin Panel
+
+The services section can be managed from:
+
+```bash
+/admin
+```
+
+The admin panel uses Vercel API routes, an HTTP-only session cookie, rate-limited login attempts, and server-side validation. Passwords must be at least 8 characters and are stored only as a hash in environment variables.
+
+For local development, create `.env` with:
+
+```bash
+ADMIN_PASSWORD=your-local-password
+```
+
+Then run:
+
+```bash
+npm run dev
+```
+
+Generate production secrets:
+
+```bash
+npm run admin:hash-password -- "your-strong-password"
+```
+
+Add the generated values to Vercel Environment Variables:
+
+```bash
+ADMIN_PASSWORD_HASH=pbkdf2:...
+ADMIN_SESSION_SECRET=...
+```
+
+To persist service edits in production, connect Vercel KV or Upstash Redis and add:
+
+```bash
+KV_REST_API_URL=...
+KV_REST_API_TOKEN=...
+```
+
+The app falls back to bundled service data if KV is not configured, but production editing needs KV so updates survive serverless restarts.
+
+---
+
 ## ⚡ Deployment
 
 This project is deployed using **Vercel**.

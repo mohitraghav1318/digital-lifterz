@@ -1,8 +1,31 @@
-import { services } from "../../data/services";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { fetchServices, getFallbackServices } from "../../lib/servicesApi";
 
 export default function Services() {
+  const [services, setServices] = useState(getFallbackServices().homeServices);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    fetchServices()
+      .then((data) => {
+        if (isMounted && data.homeServices?.length) {
+          setServices(data.homeServices);
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          setServices(getFallbackServices().homeServices);
+        }
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
   return (
     <section id="services" className="relative py-16 sm:py-20 lg:py-24">
       <div className="section-shell">
