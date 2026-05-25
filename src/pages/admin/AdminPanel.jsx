@@ -291,6 +291,11 @@ export default function AdminPanel() {
       headers: {},
     })
       .then(async (data) => {
+        if (!data.configured) {
+          setError(
+            "Admin auth is not configured. Add ADMIN_PASSWORD and ADMIN_SESSION_SECRET in Vercel Environment Variables, then redeploy.",
+          );
+        }
         setIsAuthenticated(data.authenticated);
         if (data.authenticated) {
           await loadServices();

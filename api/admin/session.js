@@ -1,4 +1,4 @@
-import { requireAdmin } from "../lib/auth.js";
+import { isAuthConfigured, requireAdmin } from "../lib/auth.js";
 import { json } from "../lib/http.js";
 
 export default async function handler(request) {
@@ -8,5 +8,8 @@ export default async function handler(request) {
     });
   }
 
-  return json({ authenticated: requireAdmin(request) });
+  return json({
+    authenticated: requireAdmin(request),
+    configured: isAuthConfigured(),
+  });
 }

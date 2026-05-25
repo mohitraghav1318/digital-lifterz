@@ -29,6 +29,15 @@ function getSecret() {
   return secret;
 }
 
+function hasSessionSecret() {
+  const secret = process.env.ADMIN_SESSION_SECRET;
+  return typeof secret === "string" && secret.length >= 32;
+}
+
+export function isAuthConfigured() {
+  return hasSessionSecret() && Boolean(process.env.ADMIN_PASSWORD_HASH || process.env.ADMIN_PASSWORD);
+}
+
 function sign(value) {
   return crypto.createHmac("sha256", getSecret()).update(value).digest("base64url");
 }
@@ -64,15 +73,18 @@ export function clearSessionCookie() {
 }
 
 export function requireAdmin(request) {
+  if (!hasSessionSecret()) return false;
+
   const token = getCookie(request, COOKIE_NAME);
   if (!token) return false;
 
   const [payload, signature] = token.split(".");
-  if (!payload || !signature || !timingSafeEqual(sign(payload), signature)) {
-    return false;
-  }
 
   try {
+    if (!payload || !signature || !timingSafeEqual(sign(payload), signature)) {
+      return false;
+    }
+
     const session = JSON.parse(Buffer.from(payload, "base64url").toString("utf8"));
     return session.role === "admin" && session.exp > Math.floor(Date.now() / 1000);
   } catch {
