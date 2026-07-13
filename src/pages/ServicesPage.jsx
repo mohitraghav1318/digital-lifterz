@@ -1,290 +1,246 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  FiArrowLeft,
+  FiArrowRight,
+  FiCheckCircle,
+  FiGrid,
+  FiInstagram,
+  FiPackage,
+  FiX,
+} from "react-icons/fi";
 import { fetchServices, getFallbackServices } from "../lib/servicesApi";
+import "./ServicesPage.css";
+
+const container = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.08 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.45, ease: "easeOut" },
+  },
+};
 
 export default function ServicesPage() {
+  const [serviceCategories, setServiceCategories] = useState(getFallbackServices().categories);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedPackage, setSelectedPackage] = useState(null);
 
-    const [serviceCategories, setServiceCategories] = useState(getFallbackServices().categories);
-    const [selectedCategory, setSelectedCategory] = useState(null);
-    const [selectedPackage, setSelectedPackage] = useState(null);
+  useEffect(() => {
+    let isMounted = true;
 
-    useEffect(() => {
-        let isMounted = true;
+    fetchServices()
+      .then((data) => {
+        if (isMounted && data.categories?.length) {
+          setServiceCategories(data.categories);
+        }
+      })
+      .catch(() => {
+        if (isMounted) {
+          setServiceCategories(getFallbackServices().categories);
+        }
+      });
 
-        fetchServices()
-            .then((data) => {
-                if (isMounted && data.categories?.length) {
-                    setServiceCategories(data.categories);
-                }
-            })
-            .catch(() => {
-                if (isMounted) {
-                    setServiceCategories(getFallbackServices().categories);
-                }
-            });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
-        return () => {
-            isMounted = false;
-        };
-    }, []);
+  return (
+    <main className="services-page">
+      <section className="services-page-section">
+        <div className="section-shell services-page-shell">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+            className="services-page-hero"
+          >
+            <p className="services-page-eyebrow">Tailored Growth Packages</p>
+            <h1 className="services-page-heading">
+              Pick your industry.
+              <span className="services-page-heading-accent">Launch the right growth plan.</span>
+            </h1>
+            <p className="services-page-subtext">
+              Every package follows the same Digital Lifterz brand system you see on the home
+              page, but tailored to the audience, channels, and growth goals of your business.
+            </p>
+          </motion.div>
 
-    return (
+          {!selectedCategory && (
+            <motion.div
+              variants={container}
+              initial="hidden"
+              animate="show"
+              className="services-page-grid"
+            >
+              {serviceCategories.map((category, index) => (
+                <motion.button
+                  key={category.id}
+                  type="button"
+                  variants={item}
+                  whileHover={{ y: -6 }}
+                  whileTap={{ scale: 0.99 }}
+                  onClick={() => setSelectedCategory(category)}
+                  className="services-page-card"
+                >
+                  <span className="services-page-card-index">
+                    {(index + 1).toString().padStart(2, "0")}
+                  </span>
+                  <div className="services-page-card-icon">
+                    <FiGrid />
+                  </div>
+                  <h2 className="services-page-card-title">{category.title}</h2>
+                  <p className="services-page-card-copy">{category.description}</p>
+                  <span className="services-page-card-link">
+                    Explore packages <FiArrowRight />
+                  </span>
+                </motion.button>
+              ))}
+            </motion.div>
+          )}
 
-        <main className="services-page relative px-4 sm:px-6">
+          <AnimatePresence mode="wait">
+            {selectedCategory && (
+              <motion.div
+                key={selectedCategory.id}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -14 }}
+                transition={{ duration: 0.28, ease: "easeOut" }}
+                className="services-page-packages"
+              >
+                <button
+                  type="button"
+                  onClick={() => setSelectedCategory(null)}
+                  className="services-page-back"
+                >
+                  <FiArrowLeft />
+                  <span>Back to Industries</span>
+                </button>
 
-            {/* Background orbs */}
-            <div className="ambient-orb left-[-30%] top-[5%] bg-[#22d3ee]/20 pulse-soft" />
-            <div className="ambient-orb right-[-30%] bottom-[5%] bg-[#22d3ee]/18 pulse-soft" />
-
-
-            <section className="min-h-screen pt-24 sm:pt-28 pb-16 sm:pb-20">
-
-                <div className="section-shell">
-
-
-                    {/* Heading */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="text-center mb-10 sm:mb-16"
-                    >
-
-                        <h1 className="gradient-text text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">
-                            Growth Solutions
-                        </h1>
-
-                        <p className="services-subtitle text-sm sm:text-base max-w-xl mx-auto">
-                            Choose your industry and unlock tailored digital growth packages.
-                        </p>
-
-                    </motion.div>
-
-
-
-                    {/* CATEGORY VIEW */}
-                    {!selectedCategory && (
-
-                        <div className="
-              grid
-              grid-cols-1
-              sm:grid-cols-2
-              lg:grid-cols-3
-              gap-5 sm:gap-6 lg:gap-8
-            ">
-
-                            {serviceCategories.map(category => (
-
-                                <motion.div
-                                    key={category.id}
-                                    whileHover={{ y: -8, scale: 1.03 }}
-                                    whileTap={{ scale: 0.98 }}
-                                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                                    onClick={() => setSelectedCategory(category)}
-                                    className="surface-card services-card gradient-hover-card p-5 sm:p-6 lg:p-8 cursor-pointer"
-                                >
-
-                                    <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold mb-2 sm:mb-3 gradient-text">
-                                        {category.title}
-                                    </h2>
-
-                                    <p className="services-card-desc text-sm sm:text-base">
-                                        {category.description}
-                                    </p>
-
-                                </motion.div>
-
-                            ))}
-
-                        </div>
-
-                    )}
-
-
-
-                    {/* PACKAGE VIEW */}
-                    <AnimatePresence>
-
-                        {selectedCategory && (
-
-                            <motion.div
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
-                            >
-
-                                {/* Back button */}
-                                <button
-                                    onClick={() => setSelectedCategory(null)}
-                                    className="services-back mb-6 sm:mb-10 text-sm sm:text-base"
-                                >
-                                    ← Back to Industries
-                                </button>
-
-
-                                {/* Title */}
-                                <h2 className="
-                  text-2xl
-                  sm:text-3xl
-                  md:text-4xl
-                  font-bold
-                  mb-8 sm:mb-12
-                  gradient-text
-                ">
-                                    {selectedCategory.title} Packages
-                                </h2>
-
-
-                                {/* Packages grid */}
-                                <div className="
-                  grid
-                  grid-cols-1
-                  sm:grid-cols-2
-                  lg:grid-cols-3
-                  gap-5 sm:gap-6
-                ">
-
-                                    {selectedCategory.packages.map((pkg) => (
-
-                                        <motion.div
-                                            key={pkg.name}
-                                            whileHover={{ y: -8, scale: 1.03 }}
-                                            whileTap={{ scale: 0.98 }}
-                                            transition={{ duration: 0.3, ease: "easeInOut" }}
-                                            className="surface-card services-package-card gradient-hover-card p-5 sm:p-6 flex flex-col justify-between"
-                                        >
-
-                                            <div>
-
-                                                <h3 className="text-xl sm:text-2xl font-semibold mb-3 sm:mb-4">
-                                                    {pkg.name}
-                                                </h3>
-
-                                                <ul className="space-y-2 sm:space-y-3 mb-5 sm:mb-6 text-sm sm:text-base">
-
-                                                    {pkg.features.map(feature => (
-                                                        <li key={feature}>• {feature}</li>
-                                                    ))}
-
-                                                </ul>
-
-                                            </div>
-
-
-                                            <button
-                                                onClick={() => setSelectedPackage(pkg)}
-                                                className="btn-primary btn-animated py-3 rounded-xl text-center font-semibold text-sm sm:text-base"
-                                            >
-                                                Get Started
-                                            </button>
-
-                                        </motion.div>
-
-                                    ))}
-
-                                </div>
-
-                            </motion.div>
-
-                        )}
-
-                    </AnimatePresence>
-
+                <div className="services-page-packages-head">
+                  <p className="services-page-eyebrow">Curated Offers</p>
+                  <h2 className="services-page-section-title">
+                    {selectedCategory.title}
+                    <span className="services-page-heading-accent">Packages</span>
+                  </h2>
                 </div>
 
-            </section>
+                <motion.div
+                  variants={container}
+                  initial="hidden"
+                  animate="show"
+                  className="services-page-grid"
+                >
+                  {selectedCategory.packages.map((pkg) => (
+                    <motion.div
+                      key={pkg.name}
+                      variants={item}
+                      whileHover={{ y: -6 }}
+                      className="services-page-package"
+                    >
+                      <div>
+                        <div className="services-page-package-icon">
+                          <FiPackage />
+                        </div>
+                        <h3 className="services-page-package-title">{pkg.name}</h3>
+                        <ul className="services-page-feature-list">
+                          {pkg.features.map((feature) => (
+                            <li key={feature} className="services-page-feature-item">
+                              <FiCheckCircle />
+                              <span>{feature}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
 
+                      <button
+                        type="button"
+                        onClick={() => setSelectedPackage(pkg)}
+                        className="services-page-primary-btn"
+                      >
+                        Get Started
+                      </button>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </section>
 
+      <AnimatePresence>
+        {selectedPackage && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setSelectedPackage(null)}
+              className="services-page-modal-backdrop"
+            />
 
-            {/* MODAL */}
-            <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.92, y: 24 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="services-page-modal-shell"
+            >
+              <div className="services-page-modal">
+                <div className="services-page-modal-badge">
+                  <FiPackage />
+                </div>
 
-                {selectedPackage && (
+                <h2 className="services-page-modal-title">{selectedPackage.name}</h2>
+                <p className="services-page-modal-copy">
+                  This package is built to strengthen your online presence, attract the right
+                  audience, and turn digital attention into measurable business growth.
+                </p>
 
-                    <>
-                        {/* Backdrop */}
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            onClick={() => setSelectedPackage(null)}
-                            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60]"
-                        />
+                <ul className="services-page-modal-list">
+                  {selectedPackage.features.map((feature) => (
+                    <li key={feature} className="services-page-modal-item">
+                      <FiCheckCircle />
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
 
+                <div className="services-page-modal-actions">
+                  <a
+                    href="https://instagram.com/digitallifterz"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="services-page-primary-btn services-page-modal-primary"
+                  >
+                    <FiInstagram />
+                    <span>Contact on Instagram</span>
+                  </a>
 
-                        {/* Modal */}
-                        <motion.div
-                            initial={{ opacity: 0, scale: 0.9, y: 40 }}
-                            animate={{ opacity: 1, scale: 1, y: 0 }}
-                            exit={{ opacity: 0 }}
-                            className="
-                fixed
-                left-1/2
-                top-1/2
-                z-[61]
-                w-[92%]
-                sm:w-[90%]
-                max-w-lg
-                -translate-x-1/2
-                -translate-y-1/2
-              "
-                        >
-
-                            <div className="surface-card p-5 sm:p-6 lg:p-8">
-
-
-                                <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 gradient-text">
-                                    {selectedPackage.name}
-                                </h2>
-
-
-                                <p className="text-slate-300 mb-5 sm:mb-6 text-sm sm:text-base">
-                                    This package is designed to build strong digital presence,
-                                    attract your target audience, and convert reach into measurable growth.
-                                </p>
-
-
-                                <ul className="space-y-2 sm:space-y-3 mb-6 text-sm sm:text-base">
-
-                                    {selectedPackage.features.map(feature => (
-                                        <li key={feature}>• {feature}</li>
-                                    ))}
-
-                                </ul>
-
-
-                                <div className="flex flex-col sm:flex-row gap-3">
-
-                                    <a
-                                        href="https://instagram.com/digitallifterz"
-                                        target="_blank"
-                                        rel="noreferrer"
-                                        className="btn-primary px-6 py-3 rounded-xl text-center"
-                                    >
-                                        Contact on Instagram
-                                    </a>
-
-
-                                    <button
-                                        onClick={() => setSelectedPackage(null)}
-                                        className="px-6 py-3 border border-white/20 rounded-xl"
-                                    >
-                                        Close
-                                    </button>
-
-                                </div>
-
-                            </div>
-
-                        </motion.div>
-
-                    </>
-                )}
-
-            </AnimatePresence>
-
-
-        </main>
-
-    );
-
+                  <button
+                    type="button"
+                    onClick={() => setSelectedPackage(null)}
+                    className="services-page-secondary-btn"
+                  >
+                    <FiX />
+                    <span>Close</span>
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </main>
+  );
 }

@@ -32,7 +32,7 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       className="navbar-wrap fixed inset-x-0 top-0 z-50 pt-4"
     >
-      <div className="section-shell">
+      <div className="navbar-frame">
         <div
           className={`navbar-shell flex items-center justify-between px-4 ${
             isCompact ? "is-compact py-2.5" : "py-3.5"
