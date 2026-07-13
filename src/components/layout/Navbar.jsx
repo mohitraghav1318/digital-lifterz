@@ -38,27 +38,30 @@ export default function Navbar() {
             isCompact ? "is-compact py-2.5" : "py-3.5"
           }`}
         >
-          {/* LOGO */}
-          <Link to="/" className="flex items-center gap-3">
+          <Link to="/" className="navbar-brand">
             <img src={logo} alt="Digital Lifterz" className="navbar-logo-img" />
-            <span className="navbar-logo-text text-base sm:text-lg">Digital Lifterz</span>
+            <div className="navbar-brand-copy">
+              <span className="navbar-logo-text text-base sm:text-lg">Digital Lifterz</span>
+              <span className="navbar-brand-tag">Growth Systems</span>
+            </div>
           </Link>
 
-          {/* DESKTOP NAV */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className={`navbar-link ${isActive(link.path) ? "is-active" : ""}`}
-              >
-                {link.icon}
-                {link.name}
-                {isActive(link.path) && (
-                  <motion.div layoutId="activeTab" className="navbar-link-indicator" />
-                )}
-              </Link>
-            ))}
+          <div className="navbar-desktop-cluster hidden md:flex items-center">
+            <div className="navbar-link-group">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  to={link.path}
+                  className={`navbar-link ${isActive(link.path) ? "is-active" : ""}`}
+                >
+                  {link.icon}
+                  {link.name}
+                  {isActive(link.path) && (
+                    <motion.div layoutId="activeTab" className="navbar-link-indicator" />
+                  )}
+                </Link>
+              ))}
+            </div>
 
             <a href="/#contact" className="navbar-contact-btn">
               <FiMail />
@@ -66,13 +69,11 @@ export default function Navbar() {
             </a>
           </div>
 
-          {/* MOBILE TOGGLE */}
           <button className="navbar-mobile-toggle md:hidden" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <FiX /> : <FiMenu />}
           </button>
         </div>
 
-        {/* MOBILE MENU */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
