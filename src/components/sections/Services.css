@@ -1,0 +1,164 @@
+/* Services.css — matches Hero/Navbar dark palette */
+
+.services-section {
+  --bg-deep: #05060a;
+  --grad-a: #ff3d81;
+  --grad-b: #a855f7;
+  --grad-c: #22d3ee;
+  --ink-100: #f5f6fb;
+  --ink-400: #a9adc1;
+  --ink-600: #6f7690;
+  --border-soft: rgba(168, 85, 247, 0.18);
+  --border-strong: rgba(34, 211, 238, 0.35);
+
+  position: relative;
+  background: var(--bg-deep);
+}
+
+.services-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--grad-c);
+}
+
+.services-heading {
+  margin-top: 0.75rem;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--ink-100);
+  letter-spacing: -0.01em;
+}
+
+.services-subtext {
+  margin-top: 0.75rem;
+  color: var(--ink-400);
+  font-size: 1.05rem;
+}
+
+.services-view-all {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.85rem;
+  border: 1px solid var(--border-soft);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--ink-100);
+  padding: 0.85rem 1.4rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.services-view-all:hover {
+  border-color: var(--border-strong);
+  background: rgba(34, 211, 238, 0.06);
+}
+
+.service-card {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding: 1.75rem;
+  border-radius: 1.25rem;
+  border: 1px solid var(--border-soft);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 12px 40px rgba(168, 85, 247, 0.15);
+}
+
+/* subtle glow blob in the corner, brand gradient */
+.service-card::before {
+  content: "";
+  position: absolute;
+  top: -40%;
+  right: -30%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.25), transparent 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.service-card:hover::before {
+  opacity: 1;
+}
+
+.service-index {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--bg-deep);
+  background: linear-gradient(135deg, var(--grad-a), var(--grad-c));
+}
+
+.service-title {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.25rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--ink-100);
+}
+
+.service-features {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  font-size: 0.9rem;
+  color: var(--ink-400);
+}
+
+.service-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.service-feature-dot {
+  margin-top: 0.4rem;
+  height: 0.4rem;
+  width: 0.4rem;
+  flex-shrink: 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--grad-a), var(--grad-c));
+}
+
+.service-cta {
+  position: relative;
+  z-index: 1;
+  margin-top: 1.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.85rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: #05060a;
+  background: linear-gradient(90deg, var(--grad-c), var(--grad-b));
+  box-shadow: 0 6px 20px rgba(34, 211, 238, 0.2);
+  transition: box-shadow 0.25s ease;
+}
+
+.service-cta:hover {
+  box-shadow: 0 8px 26px rgba(168, 85, 247, 0.35);
+}
