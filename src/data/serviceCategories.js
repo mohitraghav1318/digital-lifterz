@@ -16,7 +16,7 @@ export const serviceCategories = [
                     "Business Tagline Creation",
                     "10 Social Media Posts(Total)",
                     "(Creatives + Carousels)",
-                    "5 Reels Included",
+                    "7 Reels Included",
                     "Stories Included  ",
                     "Instagram & Facebook Page Posting",
 
@@ -28,9 +28,10 @@ export const serviceCategories = [
                 features: [
                     "Everything from Basic Boost",
                     "15 Social Media Posts per Month",
-                    "7 Reels per Month",
+                    "10 Reels per Month",
                     "Stories Included(regular updates)",
                     "Instagram & Facebook Page Posting",
+                    "Trend Based Content Creation",
                     "Google My Business(GMB) Handling"
                 ],
             },
@@ -39,8 +40,8 @@ export const serviceCategories = [
                 name: "Creative Pro Max",
                 features: [
                     "Everything from Creative Growth",
-                    "20 Advanced Posts Per Month",
-                    "8 Reels Per Month",
+                    "25 Advanced Posts Per Month",
+                    "15 Reels Per Month",
                     "Stories Included(daily & campaign - based)",
                     "Instagram & Facebook Page Posting",
                     "YouTube Channel Management",
@@ -80,9 +81,10 @@ export const serviceCategories = [
                 features: [
                     "Everything from Basic Boost",
                     "15 Social Media Posts per Month",
-                    "5 Reels per Month",
+                    "10 Reels per Month",
                     "Stories Included(regular updates)",
                     "Instagram & Facebook Page Posting",
+                                        "Trend Based Content Creation",
                     "Google My Business(GMB) Handling"
                 ],
             },
@@ -91,8 +93,8 @@ export const serviceCategories = [
                 name: "Creative Pro Max",
                 features: [
                     "Everything from Creative Growth",
-                    "20 Advanced Posts Per Month",
-                    "8 Reels Per Month",
+                    "25 Advanced Posts Per Month",
+                    "15 Reels Per Month",
                     "Stories Included(daily & campaign - based)",
                     "Instagram & Facebook Page Posting",
                     "YouTube Channel Management",
@@ -121,7 +123,7 @@ export const serviceCategories = [
                     "Restaurant Tagline Creation",
                     "10 Social Media Posts(Total)",
                     "(Creatives + Carousels)",
-                    "3 Reels Included",
+                    "7 Reels Included",
                     "Stories Included",
                     "Instagram & Facebook Page Posting",
                 ],
@@ -132,9 +134,10 @@ export const serviceCategories = [
                 features: [
                     "Everything in Basic Boost",
                     "15 Social Media Posts per Month",
-                    "5 Reels per Month",
+                    "10 Reels per Month",
                     "Stories Included (regular updates)",
                     "Instagram & Facebook Page Posting",
+                                        "Trend Based Content Creation",
                     "Google My Business (GMB) Handling"
                 ],
             },
@@ -143,8 +146,8 @@ export const serviceCategories = [
                 name: "Creative Pro Max",
                 features: [
                     "Everything in Creative Growth",
-                    "20 Advanced Posts Per Month",
-                    "8 Reels Per Month",
+                    "25 Advanced Posts Per Month",
+                    "15 Reels Per Month",
                     "Stories Included (daily & campaign-based)",
                     "Instagram & Facebook Page Posting",
                     "YouTube Channel Management",
