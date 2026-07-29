@@ -29,7 +29,7 @@ export const serviceCategories = [
                     "Everything from Basic Boost",
                     "15 Social Media Posts per Month",
                     "10 Reels per Month",
-                    "Stories Included(regular updates)",
+                    "Stories Included(Regular Updates)",
                     "Instagram & Facebook Page Posting",
                     "Trend Based Content Creation",
                     "Google My Business(GMB) Handling"
@@ -46,6 +46,8 @@ export const serviceCategories = [
                     "Instagram & Facebook Page Posting",
                     "YouTube Channel Management",
                     "Advanced GMB Handling",
+                                        "Dedicated Social Media Mannager",
+
                 ],
             },
 
