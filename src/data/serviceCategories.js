@@ -163,7 +163,7 @@ export const serviceCategories = [
 
         {
         id: "dummy",
-        title: "Healthcare Growth",
+        title: "Fashion Growth",
         description:
             "Comprehensive digital growth solutions tailored for clinics, hospitals, and healthcare providers. We help you build a strong online presence, attract the right patients, and establish trust through strategic branding, optimized content, and performance-driven digital marketing.",
 
@@ -217,7 +217,7 @@ export const serviceCategories = [
 
         {
         id: "dummy2",
-        title: "Healthcare Growth",
+        title: "Pumping Growth Arena",
         description:
             "Comprehensive digital growth solutions tailored for clinics, hospitals, and healthcare providers. We help you build a strong online presence, attract the right patients, and establish trust through strategic branding, optimized content, and performance-driven digital marketing.",
 
