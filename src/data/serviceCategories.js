@@ -161,4 +161,112 @@ export const serviceCategories = [
         ],
     },
 
+        {
+        id: "dummy",
+        title: "Fashion Growth",
+        description:
+            "Comprehensive digital growth solutions tailored for clinics, hospitals, and healthcare providers. We help you build a strong online presence, attract the right patients, and establish trust through strategic branding, optimized content, and performance-driven digital marketing.",
+
+        packages: [
+
+            {
+                name: "Basic Boost",
+                features: [
+                    "Logo Design",
+                    "Service Menu Design",
+                    "Business Tagline Creation",
+                    "10 Social Media Posts(Total)",
+                    "(Creatives + Carousels)",
+                    "7 Reels Included",
+                    "Stories Included  ",
+                    "Instagram & Facebook Page Posting",
+
+                ],
+            },
+
+            {
+                name: "Creative Growth",
+                features: [
+                    "Everything from Basic Boost",
+                    "15 Social Media Posts per Month",
+                    "10 Reels per Month",
+                    "Stories Included(Regular Updates)",
+                    "Instagram & Facebook Page Posting",
+                    "Trend Based Content Creation",
+                    "Google My Business(GMB) Handling"
+                ],
+            },
+
+            {
+                name: "Creative Pro Max",
+                features: [
+                    "Everything from Creative Growth",
+                    "25 Advanced Posts Per Month",
+                    "15 Reels Per Month",
+                    "Stories Included(daily & campaign - based)",
+                    "Instagram & Facebook Page Posting",
+                    "YouTube Channel Management",
+                    "Advanced GMB Handling",
+                                        "Dedicated Social Media Mannager",
+
+                ],
+            },
+
+        ],
+    },
+
+        {
+        id: "dummy2",
+        title: "Pumping Growth Arena",
+        description:
+            "Comprehensive digital growth solutions tailored for clinics, hospitals, and healthcare providers. We help you build a strong online presence, attract the right patients, and establish trust through strategic branding, optimized content, and performance-driven digital marketing.",
+
+        packages: [
+
+            {
+                name: "Basic Boost",
+                features: [
+                    "Logo Design",
+                    "Service Menu Design",
+                    "Business Tagline Creation",
+                    "10 Social Media Posts(Total)",
+                    "(Creatives + Carousels)",
+                    "7 Reels Included",
+                    "Stories Included  ",
+                    "Instagram & Facebook Page Posting",
+
+                ],
+            },
+
+            {
+                name: "Creative Growth",
+                features: [
+                    "Everything from Basic Boost",
+                    "15 Social Media Posts per Month",
+                    "10 Reels per Month",
+                    "Stories Included(Regular Updates)",
+                    "Instagram & Facebook Page Posting",
+                    "Trend Based Content Creation",
+                    "Google My Business(GMB) Handling"
+                ],
+            },
+
+            {
+                name: "Creative Pro Max",
+                features: [
+                    "Everything from Creative Growth",
+                    "25 Advanced Posts Per Month",
+                    "15 Reels Per Month",
+                    "Stories Included(daily & campaign - based)",
+                    "Instagram & Facebook Page Posting",
+                    "YouTube Channel Management",
+                    "Advanced GMB Handling",
+                                        "Dedicated Social Media Mannager",
+
+                ],
+            },
+
+        ],
+    },
+
 ];
