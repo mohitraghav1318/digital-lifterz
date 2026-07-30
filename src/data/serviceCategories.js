@@ -46,7 +46,7 @@ export const serviceCategories = [
                     "Instagram & Facebook Page Posting",
                     "YouTube Channel Management",
                     "Advanced GMB Handling",
-                                        "Dedicated Social Media Mannager",
+                                        "Dedicated Social Media Manager",
 
                 ],
             },
