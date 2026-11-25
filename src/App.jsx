@@ -1,71 +1,28 @@
-import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 
 import Home from "./pages/Home";
 import ServicesPage from "./pages/ServicesPage";
-import Navbar from "./components/layout/Navbar";
 import AboutUs from "./pages/Aboutus";
 import AdminPanel from "./pages/admin/AdminPanel";
 import ScrollToHash from "./components/ScrollToHash";
 import PageTransition from "./components/animation/PageTransition";
 
 import "./styles/globals.css";
+import "./styles/site.css";
 
-const getInitialTheme = () => {
-  if (typeof window === "undefined") return "dark";
-
-  const savedTheme = localStorage.getItem("dl-theme");
-
-  if (savedTheme) return savedTheme;
-
-  return window.matchMedia("(prefers-color-scheme: dark)").matches
-    ? "dark"
-    : "light";
-};
-
-function AppRoutes({ theme, toggleTheme }) {
+function AppRoutes() {
   const location = useLocation();
 
   return (
     <>
-      {location.pathname !== "/admin" && <Navbar />}
       <ScrollToHash />
-
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
-          <Route
-            path="/"
-            element={
-              <PageTransition>
-                <Home theme={theme} onToggleTheme={toggleTheme} />
-              </PageTransition>
-            }
-          />
-          <Route
-            path="/services"
-            element={
-              <PageTransition>
-                <ServicesPage />
-              </PageTransition>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <PageTransition>
-                <AboutUs />
-              </PageTransition>
-            }
-          />
-          <Route
-            path="/admin"
-            element={
-              <PageTransition>
-                <AdminPanel />
-              </PageTransition>
-            }
-          />
+          <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+          <Route path="/services" element={<PageTransition><ServicesPage /></PageTransition>} />
+          <Route path="/about" element={<PageTransition><AboutUs /></PageTransition>} />
+          <Route path="/admin" element={<PageTransition><AdminPanel /></PageTransition>} />
         </Routes>
       </AnimatePresence>
     </>
@@ -73,21 +30,9 @@ function AppRoutes({ theme, toggleTheme }) {
 }
 
 export default function App() {
-
-  const [theme, setTheme] = useState(getInitialTheme);
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-    localStorage.setItem("dl-theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => {
-    setTheme(prev => prev === "dark" ? "light" : "dark");
-  };
-
   return (
     <BrowserRouter>
-      <AppRoutes theme={theme} toggleTheme={toggleTheme} />
+      <AppRoutes />
     </BrowserRouter>
   );
 }
