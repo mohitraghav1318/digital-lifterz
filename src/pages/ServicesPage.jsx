@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useSearchParams } from "react-router-dom";
 import SiteHeader from "../components/site/SiteHeader";
 import SiteFooter, { EMAIL, INSTAGRAM_URL } from "../components/site/SiteFooter";
@@ -26,6 +26,8 @@ const TIERS = [
   { bars: [ORANGE, PINK, CYAN], line: "Full-scale growth with a dedicated manager." },
 ];
 
+const noopSubscribe = () => () => {};
+
 const tabLabel = (cat) =>
   TAB_LABELS[cat.id] || cat.title.replace(/\s+Growth\b.*$/i, "").trim() || cat.title;
 
@@ -46,7 +48,11 @@ export default function ServicesPage() {
     };
   }, []);
 
-  const requested = params.get("industry");
+  // The prerendered HTML has no query string, so only honour ?industry= after
+  // hydration; otherwise the first client render wouldn't match the server HTML.
+  const hydrated = useSyncExternalStore(noopSubscribe, () => true, () => false);
+
+  const requested = hydrated ? params.get("industry") : null;
   const current = categories.find((c) => c.id === requested) || categories[0];
 
   useReveal(ref, [current?.id]);

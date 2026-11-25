@@ -2,66 +2,83 @@
 <html lang="en">
 
 <head>
-  <!-- Basic -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Google verification -->
+  <!-- Google Search Console verification -->
   <meta name="google-site-verification" content="v55UdH4n8GzkR_Hyt0acJtvK2QyvfG_4gdwk3dwMNCo" />
 
-  <!-- SEO Title -->
-  <title>Digital Lifterz | Turning Reach to Revenue</title>
-
-  <!-- SEO Description -->
-  <meta name="description"
-    content="Digital Lifterz helps businesses grow with modern websites, branding, and digital growth solutions. Turning reach into revenue with conversion-focused strategies." />
-
-  <!-- Keywords -->
-  <meta name="keywords"
-    content="Digital Lifterz, digital marketing, website development, branding, social media growth, web design, business website" />
-
-  <!-- Author -->
-  <meta name="author" content="Digital Lifterz" />
-
-  <!-- Robots -->
+  <!-- seo:start (replaced per page by scripts/prerender.mjs; values come from src/seo.js) -->
+  <title>Digital Lifterz | Digital Marketing &amp; Social Media Agency</title>
+  <meta name="description" content="Digital Lifterz is a digital marketing agency turning reach into revenue — branding, social media content, reels, Google My Business and performance marketing for growing businesses." />
   <meta name="robots" content="index, follow" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Digital Lifterz | Turning Reach to Revenue" />
-  <meta property="og:description"
-    content="Helping businesses transform reach into revenue with modern digital solutions." />
-  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://digital-lifterz.vercel.app/" />
+  <meta property="og:title" content="Digital Lifterz | Digital Marketing &amp; Social Media Agency" />
+  <meta property="og:description" content="Digital Lifterz is a digital marketing agency turning reach into revenue — branding, social media content, reels, Google My Business and performance marketing for growing businesses." />
   <meta property="og:url" content="https://digital-lifterz.vercel.app/" />
-  <meta property="og:image" content="https://digital-lifterz.vercel.app/logo.png" />
+  <meta name="twitter:title" content="Digital Lifterz | Digital Marketing &amp; Social Media Agency" />
+  <meta name="twitter:description" content="Digital Lifterz is a digital marketing agency turning reach into revenue — branding, social media content, reels, Google My Business and performance marketing for growing businesses." />
+  <!-- seo:end -->
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Digital Lifterz | Turning Reach to Revenue" />
-  <meta name="twitter:description"
-    content="Modern digital growth solutions focused on converting reach into revenue." />
+  <meta name="author" content="Digital Lifterz" />
+  <meta property="og:site_name" content="Digital Lifterz" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://digital-lifterz.vercel.app/logo.png" />
+  <meta property="og:image:width" content="1024" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:image:alt" content="Digital Lifterz logo" />
+  <meta name="twitter:card" content="summary" />
   <meta name="twitter:image" content="https://digital-lifterz.vercel.app/logo.png" />
 
-  <!-- Theme -->
   <meta name="theme-color" content="#0F121A" />
+
+  <!-- Structured data: tells Google the brand name, logo and profiles -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://digital-lifterz.vercel.app/#website",
+        "name": "Digital Lifterz",
+        "alternateName": ["DigitalLifterz", "Digital Lifters"],
+        "url": "https://digital-lifterz.vercel.app/",
+        "publisher": { "@id": "https://digital-lifterz.vercel.app/#org" }
+      },
+      {
+        "@type": ["Organization", "ProfessionalService"],
+        "@id": "https://digital-lifterz.vercel.app/#org",
+        "name": "Digital Lifterz",
+        "slogan": "Turning reach to revenue",
+        "description": "Digital marketing agency offering branding, social media content, reels, Google My Business handling and performance marketing.",
+        "url": "https://digital-lifterz.vercel.app/",
+        "logo": "https://digital-lifterz.vercel.app/logo.png",
+        "image": "https://digital-lifterz.vercel.app/logo.png",
+        "email": "digitallifterz@gmail.com",
+        "sameAs": ["https://instagram.com/digitallifterz"],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "email": "digitallifterz@gmail.com"
+        },
+        "knowsAbout": ["Digital marketing", "Social media marketing", "Branding", "Performance marketing", "Google My Business"]
+      }
+    ]
+  }
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" />
 
-  <!-- Favicon -->
-  <link rel="icon" href="/logo.png" />
-
+  <link rel="icon" type="image/jpeg" href="/logo.png" />
+  <link rel="apple-touch-icon" href="/logo.png" />
 </head>
 
 <body>
-
-  <!-- React root -->
-  <div id="root"></div>
-
-  <!-- Vite entry -->
+  <div id="root"><!--app--></div>
   <script type="module" src="/src/main.jsx"></script>
-
 </body>
 
 </html>
